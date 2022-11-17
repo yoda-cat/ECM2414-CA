@@ -1,3 +1,7 @@
+package cardgame;
+
+import java.util.ArrayList;
+
 public class Player extends Thread {
     
     private final int playerID;
