@@ -1,6 +1,8 @@
 package cardgame;
 
 import java.util.ArrayList;
+import java.util.Random;
+
 
 public class Player extends Thread {
     
@@ -31,7 +33,23 @@ public class Player extends Thread {
         hand.add(card);
     }
 
-    //discard card
+    public void discardCard() {
+        cards = getHand();
+        
+        for (Card card : cards) {
+            if (card.getValue() == playerID) {
+                cards.remove(card);
+            }
+        Random random = new Random();
+        Card discardCard = cards[random.nextInt(0,cards.size())];
+        hand.remove(discardCard);
+        //send card to deck that receives it
+        }
+
+
+    }
+
+
 
     //do file stuff
 
