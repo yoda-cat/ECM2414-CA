@@ -38,13 +38,19 @@ public class Player extends Thread {
         hand.add(card);
     }
 
-    //public void drawCard();
+    public void takeTurn() {
+        //drawCard();
+        discardCard();
+        //output current hand to file
+    }
+
+    //private void drawCard();
         //card = card taken from deck with ID playerID
         //add card to hand
         //(a card must be discarded beforehand or else this one may be removed which shiuldnt happen)
         //write the action to file
 
-    public void discardCard() {
+    private void discardCard() {
         cards = getHand();
         for (Card card : cards) {
             if (card.getValue() == playerID) {
@@ -62,6 +68,16 @@ public class Player extends Thread {
 
     }
 
+    public boolean hasWon() {
+        int[] handValues = getHandValues();
+        for (int value : handValues) {
+            if (value != handValues[0]) {
+                return False;
+            }
+        }
+        //inform the other player threads that this player has won, the game is over
+        return True;
+    }
     //boolean win checking method to be called by the cardGame for each round, return True if this player has won
     //if all cards in the hand have the same value then announce to all threads that the game has been won, terminal gets a message blah blah blah
 
