@@ -4,8 +4,9 @@ import java.util.ArrayList;
 
 public class CardDeck {
     
-    private int deckID; //final?
+    private int deckID;
     private ArrayList<Card> cards = new ArrayList<Card>();
+    
 
     Deck(int ID) {
         this.deckID = ID;
@@ -31,20 +32,34 @@ public class CardDeck {
         cards.add(card);
     }
 
-    public getTopCard() {
+    public Card getTopCard() {
         Card card = cards.get(0);
         cards.remove(0);
         return card;
-
     }
 
-    //file writing stuff
 
-    //String filename = "deck"+deckID+"_output.txt"
+
+    
+    //file writing stuff:
+
+    String filename = "deck"+deckID+"_output.txt";
+    private BufferedWriter out = new BufferedWriter(new FileWriter(filename));
+
+    //if (new File(filename).exists()) {
+        //
+    //}
+
     //check to see if file already exists, if so then delete it
     //create file with name filename
     //
     //write to file method needed, gonna be called by a few methods
+
+    //private void writeToFile(String message) throws IOException {
+    //    this.out.write(message);
+    //    this.out.newLine();
+    //    this.out.flush();
+    //}
 
 
     //at end of game put "deck'x' contents: (vals of each card in the deck)"

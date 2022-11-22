@@ -3,11 +3,16 @@ package cardgame;
 import java.util.ArrayList;
 import java.util.Random;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class Player extends Thread {
     
     private final int playerID;
     private ArrayList<Card> hand = new ArrayList<Card>();
+
+    //private BufferedWriter out;
 
     public Player(int ID) {
         this.playerID = ID;
@@ -41,7 +46,6 @@ public class Player extends Thread {
 
     public void discardCard() {
         cards = getHand();
-        
         for (Card card : cards) {
             if (card.getValue() == playerID) {
                 cards.remove(card);
@@ -61,9 +65,11 @@ public class Player extends Thread {
     //boolean win checking method to be called by the cardGame for each round, return True if this player has won
     //if all cards in the hand have the same value then announce to all threads that the game has been won, terminal gets a message blah blah blah
 
-    //do file stuff
+    //file stuff:
 
-    //String filename = "player"+playerID+"_output.txt"
+    //String filename = "deck"+deckID+"_output.txt"
+    //private BufferedWriter out = new BufferedWriter( new FileWriter( filename ) );
+
     //check to see if file already exists, if so then delete it
     //create file with name filename
     //
@@ -78,4 +84,17 @@ public class Player extends Thread {
         //player x exist
         //player x final hand: (their final hand)
 
+
+    //private void writeToFile(String message) throws IOException {
+    //    this.out.write(message);
+    //    this.out.newLine();
+    //    this.out.flush();
+    //}
+
 }
+
+
+
+
+
+
