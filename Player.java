@@ -33,6 +33,12 @@ public class Player extends Thread {
         hand.add(card);
     }
 
+    //public void drawCard();
+        //card = card taken from deck with ID playerID
+        //add card to hand
+        //(a card must be discarded beforehand or else this one may be removed which shiuldnt happen)
+        //write the action to file
+
     public void discardCard() {
         cards = getHand();
         
@@ -43,16 +49,33 @@ public class Player extends Thread {
         Random random = new Random();
         Card discardCard = cards[random.nextInt(0,cards.size())];
         hand.remove(discardCard);
-        //send card to deck that receives it
+        //add card to deck with ID playerID + 1
+        //OR
+        //return the discarded card and the cardGame class sends it to the deck instead
+        //write the action to file
         }
 
 
     }
 
-
+    //boolean win checking method to be called by the cardGame for each round, return True if this player has won
+    //if all cards in the hand have the same value then announce to all threads that the game has been won, terminal gets a message blah blah blah
 
     //do file stuff
 
+    //String filename = "player"+playerID+"_output.txt"
+    //check to see if file already exists, if so then delete it
+    //create file with name filename
     //
+    //write to file method needed, gonna be called by a few methods
+
+
+    //initial hand must be first thing in the file
+
+
+    //final things in file are:
+        //player x wins  OR  player n has informed player x that player n has won
+        //player x exist
+        //player x final hand: (their final hand)
 
 }
