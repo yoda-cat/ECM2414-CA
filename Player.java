@@ -38,7 +38,7 @@ public class Player extends Thread {
         hand.add(card);
     }
 
-    public void takeTurn() {
+    public synchronized void takeTurn() {
         //drawCard();
         discardCard();
         //output current hand to file
@@ -76,10 +76,9 @@ public class Player extends Thread {
             }
         }
         //inform the other player threads that this player has won, the game is over
+        //print to terminal that player (playerID) has won
         return True;
     }
-    //boolean win checking method to be called by the cardGame for each round, return True if this player has won
-    //if all cards in the hand have the same value then announce to all threads that the game has been won, terminal gets a message blah blah blah
 
     //file stuff:
 
