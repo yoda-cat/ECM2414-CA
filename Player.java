@@ -38,30 +38,34 @@ public class Player extends Thread {
         hand.add(card);
     }
 
-    public synchronized void takeTurn() {
-        //drawCard();
-        discardCard();
+    public synchronized void takeTurn(ArrayList<CardDeck> decks) {
+        
+        drawCard(decks.get(playerID - 1)); // deck with same ID as the player due to array positioning starting at 0
+        
+        //if playerID = size of decks,
+            //discardcard to deck 0
+
+        //else discard to deck(playerid)
+                
         //output current hand to file
     }
 
-    //private void drawCard();
-        //card = card taken from deck with ID playerID
-        //add card to hand
-        //(a card must be discarded beforehand or else this one may be removed which shiuldnt happen)
+    private void drawCard(CardDeck deck) {
+        Card chosenCard = deck.getTopCard();
+        hand.add(chosenCard);
         //write the action to file
+    }
 
-    private void discardCard() {
+    private void discardCard(CardDeck deck) {
         cards = getHand();
         for (Card card : cards) {
             if (card.getValue() == playerID) {
                 cards.remove(card);
             }
         Random random = new Random();
-        Card discardCard = cards[random.nextInt(0,cards.size())];
-        hand.remove(discardCard);
-        //add card to deck with ID playerID + 1
-        //OR
-        //return the discarded card and the cardGame class sends it to the deck instead
+        Card chosenCard = cards[random.nextInt(0,cards.size())];
+        hand.remove(chosenCard);
+        deck.addCard(chosenCard);
         //write the action to file
         }
 
