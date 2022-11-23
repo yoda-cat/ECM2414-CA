@@ -3,9 +3,9 @@ package cardgame;
 import java.util.ArrayList;
 import java.util.Random;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+//import java.io.BufferedWriter;
+//import java.io.FileWriter;
+//import java.io.IOException;
 
 public class Player extends Thread {
     
@@ -79,12 +79,12 @@ public class Player extends Thread {
         int[] handValues = getHandValues();
         for (int value : handValues) {
             if (value != handValues[0]) {
-                return False;
+                return false;
             }
         }
         //inform the other player threads that this player has won, the game is over
         //print to terminal that player (playerID) has won
-        return True;
+        return true;
     }
 
     //file stuff:
