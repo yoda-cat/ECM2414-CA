@@ -3,6 +3,10 @@ import java.io.FileNotFoundException;  // Import this class to handle errors
 import java.util.Scanner; // Import the Scanner class to read text files
 import java.util.ArrayList;
 
+import cardgame.Player;
+import cardgame.Card;
+import cardgame.CardDeck;
+
 /* TASKS TO DO:
      * *DONE* player input and test validity 
      * *DONE* pack file input and validity
@@ -19,6 +23,8 @@ import java.util.ArrayList;
 
 public class CardGame {
    
+    
+
     static int inputPlayers() {
         int players = 0;
     
@@ -39,8 +45,6 @@ public class CardGame {
         }
         return players;
     }
-
-
 
 
     static ArrayList<Integer> inputPack(int players) {
@@ -92,34 +96,35 @@ public class CardGame {
             e.getStackTrace();
             }
         }
+        scanner.close();
         return data;
     }
     
 
 
     public static void main(String[] args) {
-    int NoPlayers = inputPlayers();
-    ArrayList<Integer> CardPack = inputPack(NoPlayers);
-    System.out.println(CardPack);
+        ArrayList<Player> players = new ArrayList<>();
+        //ArrayList<CardDeck> decks = new ArrayList<>();
+        int noPlayers = inputPlayers();
+        ArrayList<Integer> CardPack = inputPack(noPlayers);
+        System.out.println(CardPack);
     } 
 
 
     /*public static void distributeCards(){
         for (int i=0;i<4;i++){
             System.out.println("Giving each player a card");
-            for (int j=0;j<NoPlayers;j++){
+            for (int j=0;j<noPlayers;j++){
                 System.out.println("Player " + j + " is receiving a card");
                 players.get(j).dealCard(pack.get(i*numberOfPlayers + j));
             }
         }    
-
         for (int i=0;i<4;i++){
             System.out.println("Giving a card to each deck");
-            for (int j=0;j<numberOfPlayers;j++){
-                ystem.out.println("Deck " + j + " is receiving a card");
-                players.get(j).dealCard(pack.get(i*numberOfPlayers + j));
+            for (int j=0;j<noPlayers;j++){
+                System.out.println("Deck " + j + " is receiving a card");
+                players.get(j).dealCard(pack.get(i*noPlayers + j));
             }
         }
     }*/
 }
-                
