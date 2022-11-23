@@ -96,7 +96,7 @@ public class CardGame {
             e.getStackTrace();
             }
         }
-        scanner.close();
+
         return data;
     }
     
@@ -104,27 +104,61 @@ public class CardGame {
 
     public static void main(String[] args) {
         ArrayList<Player> players = new ArrayList<>();
-        //ArrayList<CardDeck> decks = new ArrayList<>();
+        ArrayList<CardDeck> decks = new ArrayList<>();
         int noPlayers = inputPlayers();
-        ArrayList<Integer> CardPack = inputPack(noPlayers);
-        System.out.println(CardPack);
+        ArrayList<Integer> cardPack = inputPack(noPlayers);
+        System.out.println(cardPack);
+
+        for (int j=1;j<noPlayers+1;j++) {
+            players.add(new Player(j));
+            decks.add(new CardDeck(j));
+        }
+       distributeCards(noPlayers, players, decks, cardPack);
+       //for (int i=0;i<4;i++) {
+       //     System.out.println(players.get(0).getHand().get(i).getValue());
+       //}
+        for (Player p : players) {
+            p.start();
+        }
+        
+        boolean gameNotWon = true;
+
+        while(gameNotWon);
+            for (Player p : players) {
+                p.takeTurn(decks);
+                if (p.winCheck()) {
+                    gameNotWon = false;
+            for (Player a : players) {
+                if (a.winCheck()) {
+                    gameNotWon = false;
+                    //System.out.println("the winner is player"+a.getPlayerID());
+                    //System.out.println("the player had hand");
+                    //for (int i=0;i<4;i++) {
+                    //    System.out.println(a.getHandValues());
+                    //}
+                }
+            }
+        System.out.println("end");
+        }
+    }
+        
     } 
 
 
-    /*public static void distributeCards(){
-        for (int i=0;i<4;i++){
+    public static void distributeCards(int noPlayers, ArrayList<Player> players, ArrayList<CardDeck> decks, ArrayList<Integer> cardPack){
+        for (int i=1;i<noPlayers+1;i++){
             System.out.println("Giving each player a card");
-            for (int j=0;j<noPlayers;j++){
+            for (int j=1;j<noPlayers+1;j++){
                 System.out.println("Player " + j + " is receiving a card");
-                players.get(j).dealCard(pack.get(i*numberOfPlayers + j));
+                players.get(j-1).addCard(new Card(cardPack.get(i*noPlayers + j-1)));
             }
         }    
-        for (int i=0;i<4;i++){
+        for (int i=1;i<noPlayers+1;i++){
             System.out.println("Giving a card to each deck");
-            for (int j=0;j<noPlayers;j++){
+            for (int j=1;j<noPlayers+1;j++){
                 System.out.println("Deck " + j + " is receiving a card");
-                players.get(j).dealCard(pack.get(i*noPlayers + j));
+                decks.get(j-1).addCard(new Card(cardPack.get(i*noPlayers + j-1)));
             }
         }
-    }*/
+    }
 }

@@ -42,7 +42,7 @@ public class Player extends Thread {
         
         drawCard(decks.get(playerID - 1)); // deck with same ID as the player due to array positioning starting at 0
         
-        if (playerID = decks.size()) { 
+        if (playerID == decks.size()) { 
             discardCard(decks.get(0));
         }
 
@@ -60,13 +60,13 @@ public class Player extends Thread {
     }
 
     private void discardCard(CardDeck deck) {
-        cards = getHand();
-        for (Card card : cards) {
-            if (card.getValue() == playerID) {
-                cards.remove(card);
+        ArrayList<Card> cards = getHand();
+        for (int i = 0; i < cards.size(); i++) { 
+            if (cards.get(i).getValue() == playerID) {
+                cards.remove(cards.get(i));
             }
         Random random = new Random();
-        Card chosenCard = cards[random.nextInt(0,cards.size())];
+        Card chosenCard = cards.get(random.nextInt(0,cards.size()));
         hand.remove(chosenCard);
         deck.addCard(chosenCard);
         //write the action to file
@@ -112,6 +112,34 @@ public class Player extends Thread {
     //    this.out.newLine();
     //    this.out.flush();
     //}
+
+
+    public void gameOver(int winner) {
+        if (winner = playerID) {
+            //output to file:
+            //"player "+playerID+" wins"
+        }
+        else {
+            //output to file:
+            //"player "+winner+" has informed player "+playerID+" that player "+winner+" has won"
+        }
+        
+        //output to file:
+        //"player "+playerID+" exits"
+    
+        //output to file:
+        //"player "+playerID+" final hand: "+getHandValues()
+    
+        //close / save file
+    
+    }
+    
+    public void playerWon(ArrayList<Player> players) {
+        //announce to terminal that this player won
+        for (Player p : players) {
+            p.gameOver();
+        }
+    }
 
 }
 
