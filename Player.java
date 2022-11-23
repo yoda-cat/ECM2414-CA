@@ -42,12 +42,15 @@ public class Player extends Thread {
         
         drawCard(decks.get(playerID - 1)); // deck with same ID as the player due to array positioning starting at 0
         
-        //if playerID = size of decks,
-            //discardcard to deck 0
+        if (playerID = decks.size()) { 
+            discardCard(decks.get(0));
+        }
 
-        //else discard to deck(playerid)
+        else {
+            discardCard(decks.get(playerID));
+        }
                 
-        //output current hand to file
+        //write current hand to file
     }
 
     private void drawCard(CardDeck deck) {
