@@ -2,13 +2,17 @@ package cardgame;
 
 import java.util.ArrayList;
 
+//import java.io.BufferedWriter;
+//import java.io.FileWriter;
+//import java.io.IOException;
+
 public class CardDeck {
     
     private int deckID;
     private ArrayList<Card> cards = new ArrayList<Card>();
     
 
-    Deck(int ID) {
+    public CardDeck(int ID) {
         this.deckID = ID;
     }
 
@@ -44,7 +48,7 @@ public class CardDeck {
     //file writing stuff:
 
     String filename = "deck"+deckID+"_output.txt";
-    private BufferedWriter out = new BufferedWriter(new FileWriter(filename));
+    //private BufferedWriter out = new BufferedWriter(new FileWriter(filename));
 
     //if (new File(filename).exists()) {
         //
@@ -53,14 +57,6 @@ public class CardDeck {
     //check to see if file already exists, if so then delete it
     //create file with name filename
     //
-    //write to file method needed, gonna be called by a few methods
-
-    //private void writeToFile(String message) throws IOException {
-    //    this.out.write(message);
-    //    this.out.newLine();
-    //    this.out.flush();
-    //}
-
 
     //at end of game put "deck'x' contents: (vals of each card in the deck)"
 

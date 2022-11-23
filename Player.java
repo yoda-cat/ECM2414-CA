@@ -75,7 +75,7 @@ public class Player extends Thread {
 
     }
 
-    public boolean hasWon() {
+    public boolean winCheck() {
         int[] handValues = getHandValues();
         for (int value : handValues) {
             if (value != handValues[0]) {
